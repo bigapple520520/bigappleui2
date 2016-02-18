@@ -1,0 +1,11 @@
+<resources>
+
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    
+    <dimen name="demo_swipe_behind_offset">100dp</dimen>
+    <dimen name="dp40">15dp</dimen>
+    <dimen name="dp100">100dp</dimen>
+
+</resources>

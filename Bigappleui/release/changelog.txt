@@ -1,0 +1,28 @@
+BigappleUI框架升级说明
+========================
+
+version = 1.0.0 (2015-05-31)
+
+初始版本，核心功能
+1、album相册选择
+2、camera自定义拍照
+3、fileexplorer文件选择器
+4、gifview播放gif
+5、lettersort字母条搜索
+6、pullrefresh下拉刷新
+7、slidingmenu侧滑组件
+8、slidingupdown上拉下拉有惊喜
+9、utils工具类
+10、view自定义一些View
+11、viewpage切动下一页
+
+version = 1.1.0 (2015-09-10)
+1、修改字母排序那个组件
+
+version = 1.2.0 (2015-09-21)
+1、添加widgets/swipeview侧滑操作
+
+version = 1.2.1 (2015-11-16)
+1、BUNumRadioButton下标未读消息,支持99+
+
+
