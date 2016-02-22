@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Bigappleui/Bigappleui.iml" filepath="$PROJECT_DIR$/Bigappleui/Bigappleui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Bigappleui2.iml" filepath="$PROJECT_DIR$/Bigappleui2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bigappleuilib/bigappleuilib.iml" filepath="$PROJECT_DIR$/bigappleuilib/bigappleuilib.iml" />
     </modules>
   </component>
 </project>
