@@ -11,7 +11,7 @@ import android.graphics.Paint.Align;
 import android.util.AttributeSet;
 import android.widget.RadioButton;
 
-import com.xuan.bigapple.lib.utils.display.DisplayUtils;
+import com.xuan.bigappleui.lib.utils.BUDisplayUtil;
 
 /**
  * 自定义RadioButton做tab按钮，可在上面绘制未读消息数
@@ -319,7 +319,7 @@ public class BUNumRadioButton extends RadioButton {
 	private float getPxBySp(float sp) {
 		Context context = getContext();
 		if (context instanceof Activity) {
-			return DisplayUtils.getPxBySp((Activity) context, sp);
+			return BUDisplayUtil.getPxBySp((Activity) context, sp);
 		} else {
 			return sp;
 		}
@@ -334,7 +334,7 @@ public class BUNumRadioButton extends RadioButton {
 	private float getPxByDp(float dp) {
 		Context context = getContext();
 		if (context instanceof Activity) {
-			return DisplayUtils.getPxByDp((Activity) context, dp);
+			return BUDisplayUtil.getPxByDp((Activity) context, dp);
 		} else {
 			return dp;
 		}

@@ -10,8 +10,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 
-import com.xuan.bigapple.lib.utils.display.DisplayUtils;
-
 /**
  * 给图片加上未读消息处理器
  * 
@@ -143,7 +141,7 @@ public class UnreadBitmapProcessor {
 	// 内置工具方法//////////////////////////////////////////////////
 	private float getPxByDp(float dp) {
 		if (null != context && context instanceof Activity) {
-			return DisplayUtils.getPxByDp((Activity) context, dp);
+			return BUDisplayUtil.getPxByDp((Activity) context, dp);
 		} else {
 			return dp;
 		}
@@ -151,7 +149,7 @@ public class UnreadBitmapProcessor {
 
 	private float getPxBySp(float sp) {
 		if (null != context && context instanceof Activity) {
-			return DisplayUtils.getPxBySp((Activity) context, sp);
+			return BUDisplayUtil.getPxBySp((Activity) context, sp);
 		} else {
 			return sp;
 		}

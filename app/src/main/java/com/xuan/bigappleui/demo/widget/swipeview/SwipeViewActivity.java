@@ -1,18 +1,16 @@
 package com.xuan.bigappleui.demo.widget.swipeview;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.xuan.bigapple.lib.ioc.InjectView;
-import com.xuan.bigapple.lib.ioc.app.BPActivity;
 import com.xuan.bigappleui.R;
 
-public class SwipeViewActivity extends BPActivity {
+import java.util.ArrayList;
+import java.util.List;
 
-	@InjectView(R.id.listView)
+public class SwipeViewActivity extends Activity {
+
 	private ListView listView;
 
 	private static List<String> dataList = new ArrayList<String>();
@@ -28,6 +26,8 @@ public class SwipeViewActivity extends BPActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.demo_list);
 
+		listView = (ListView)findViewById(R.id.listView);
 		listView.setAdapter(new SwipeViewDemoAdapter(this, dataList));
 	}
+
 }

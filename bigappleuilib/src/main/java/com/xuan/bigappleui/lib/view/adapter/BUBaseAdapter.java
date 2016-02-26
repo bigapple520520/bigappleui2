@@ -6,11 +6,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.xuan.bigapple.lib.bitmap.BPBitmapLoader;
-import com.xuan.bigapple.lib.bitmap.BitmapDisplayConfig;
-import com.xuan.bigapple.lib.bitmap.listeners.DisplayImageListener;
-import com.xuan.bigapple.lib.utils.BitmapUtils;
-import com.xuan.bigapple.lib.utils.Validators;
+import com.xuan.bigappleui.lib.utils.BUBitmapUtil;
+import com.xuan.bigappleui.lib.utils.BUValidator;
+import com.xuan.bigappleui.lib.utils.bitmap.BPBitmapLoader;
+import com.xuan.bigappleui.lib.utils.bitmap.BitmapDisplayConfig;
+import com.xuan.bigappleui.lib.utils.bitmap.listeners.DisplayImageListener;
+
 
 /**
  * 适配器基类
@@ -36,7 +37,7 @@ public abstract class BUBaseAdapter extends BaseAdapter {
 	 * @param url
 	 */
 	public void initImageView(ImageView imageView, String url) {
-		if (!Validators.isEmpty(url)) {
+		if (!BUValidator.isEmpty(url)) {
 			imageView.setVisibility(View.VISIBLE);
 			BPBitmapLoader.getInstance().display(imageView, url);
 		} else {
@@ -51,9 +52,9 @@ public abstract class BUBaseAdapter extends BaseAdapter {
 	 * @param url
 	 */
 	public void initImageViewCircle(ImageView imageView, String url) {
-		if (!Validators.isEmpty(url)) {
+		if (!BUValidator.isEmpty(url)) {
 			imageView.setVisibility(View.VISIBLE);
-			if (Validators.isNumber(url)) {
+			if (BUValidator.isNumber(url)) {
 				// 资源id
 				imageView.setImageResource(Integer.valueOf(url));
 			} else {
@@ -65,7 +66,7 @@ public abstract class BUBaseAdapter extends BaseAdapter {
 							Bitmap bitmap,
 							BitmapDisplayConfig bitmapDisplayConfig) {
 						if (null != bitmap) {
-							imageView.setImageBitmap(BitmapUtils
+							imageView.setImageBitmap(BUBitmapUtil
 									.getRoundedCornerBitmap(bitmap));
 						} else {
 							imageView.setImageBitmap(bitmapDisplayConfig
@@ -104,7 +105,7 @@ public abstract class BUBaseAdapter extends BaseAdapter {
 	 */
 	public void initTextView(TextView textView, String text) {
 		textView.setVisibility(View.VISIBLE);
-		if (!Validators.isEmpty(text)) {
+		if (!BUValidator.isEmpty(text)) {
 			textView.setText(text);
 		} else {
 			textView.setText("");

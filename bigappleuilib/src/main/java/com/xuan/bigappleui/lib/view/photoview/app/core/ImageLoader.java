@@ -2,9 +2,9 @@ package com.xuan.bigappleui.lib.view.photoview.app.core;
 
 import android.widget.ImageView;
 
-import com.xuan.bigapple.lib.bitmap.BPBitmapLoader;
-import com.xuan.bigapple.lib.bitmap.BitmapDisplayConfig;
-import com.xuan.bigapple.lib.utils.Validators;
+import com.xuan.bigappleui.lib.utils.BUValidator;
+import com.xuan.bigappleui.lib.utils.bitmap.BPBitmapLoader;
+import com.xuan.bigappleui.lib.utils.bitmap.BitmapDisplayConfig;
 
 /**
  * 图片加载器
@@ -22,7 +22,7 @@ public abstract class ImageLoader {
 	 */
 	public static void display(ImageView imageView, String url,
 			BitmapDisplayConfig config) {
-		if (null == imageView || Validators.isEmpty(url)) {
+		if (null == imageView || BUValidator.isEmpty(url)) {
 			return;
 		}
 

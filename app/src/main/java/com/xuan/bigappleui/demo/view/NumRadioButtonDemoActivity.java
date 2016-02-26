@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
-import com.xuan.bigapple.lib.utils.ToastUtils;
 import com.xuan.bigappleui.R;
+import com.xuan.bigappleui.lib.utils.BUToastUtil;
 import com.xuan.bigappleui.lib.utils.UnreadBitmapProcessor;
 import com.xuan.bigappleui.lib.view.BUNumRadioButton;
 
@@ -76,7 +76,7 @@ public class NumRadioButtonDemoActivity extends Activity {
         tabs.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup arg0, int position) {
-                ToastUtils.displayTextShort(
+                BUToastUtil.displayTextShort(
                         "选中" + position);
             }
         });

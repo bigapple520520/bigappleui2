@@ -9,9 +9,9 @@ import android.provider.MediaStore.Images.Thumbnails;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.xuan.bigapple.lib.utils.Validators;
 import com.xuan.bigappleui.lib.album.entity.ImageBucket;
 import com.xuan.bigappleui.lib.album.entity.ImageItem;
+import com.xuan.bigappleui.lib.utils.BUValidator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -110,12 +110,12 @@ public class AlbumHelper {
 							@Override
 							public int compare(ImageItem imageItem1,
 									ImageItem imageItem2) {
-								if (!Validators
+								if (!BUValidator
 										.isNumber(imageItem1.dateModified)) {
 									imageItem1.dateModified = "0";
 								}
 
-								if (!Validators
+								if (!BUValidator
 										.isNumber(imageItem2.dateModified)) {
 									imageItem2.dateModified = "0";
 								}

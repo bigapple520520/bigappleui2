@@ -1,7 +1,5 @@
 package com.xuan.bigappleui.lib.album.core;
 
-import java.io.File;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,12 +8,14 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
-import com.xuan.bigapple.lib.bitmap.BitmapDisplayConfig;
-import com.xuan.bigapple.lib.bitmap.core.impl.local.LocalBitmapLoader;
-import com.xuan.bigapple.lib.bitmap.listeners.DisplayImageListener;
 import com.xuan.bigappleui.lib.album.BUAlbum;
+import com.xuan.bigappleui.lib.utils.bitmap.BitmapDisplayConfig;
+import com.xuan.bigappleui.lib.utils.bitmap.core.impl.local.LocalBitmapLoader;
+import com.xuan.bigappleui.lib.utils.bitmap.listeners.DisplayImageListener;
 import com.xuan.bigappleui.lib.utils.ui.ColorUtils;
 import com.xuan.bigappleui.lib.view.imageview.BURotationImageView;
+
+import java.io.File;
 
 /**
  * 图片加载器

@@ -1,16 +1,16 @@
 package com.xuan.bigappleui.demo.widget.adapter;
 
+import android.app.Activity;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.xuan.bigapple.lib.ioc.app.BPActivity;
 
 /**
  * 列表侧滑测试
  * 
  * @author xuan
  */
-public class SwipeAdapterActivity extends BPActivity {
+public class SwipeAdapterActivity extends Activity {
 	private static final List<String> dataList = new ArrayList<String>();
 
 	static {

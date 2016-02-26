@@ -11,9 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.xuan.bigapple.lib.utils.display.DisplayUtils;
 import com.xuan.bigappleui.lib.album.BUAlbum;
 import com.xuan.bigappleui.lib.utils.BUCompat;
+import com.xuan.bigappleui.lib.utils.BUDisplayUtil;
 import com.xuan.bigappleui.lib.utils.ui.entity.TitleView;
 
 /**
@@ -35,7 +35,7 @@ public class BaseUIHelper {
 	 * @return
 	 */
 	protected static int getPx(Activity activity, int dp) {
-		return (int) DisplayUtils.getPxByDp(activity, dp);
+		return (int) BUDisplayUtil.getPxByDp(activity, dp);
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class BaseUIHelper {
 		// 标题布局
 		RelativeLayout headLayout = new RelativeLayout(activity);
 		LinearLayout.LayoutParams headLayoutLp = new LinearLayout.LayoutParams(
-				MATCH_PARENT, (int) DisplayUtils.getPxByDp(activity, 48));
+				MATCH_PARENT, (int) BUDisplayUtil.getPxByDp(activity, 48));
 		headLayout.setLayoutParams(headLayoutLp);
 		headLayout.setBackgroundColor(BUAlbum.getConfig().titleBgColor);
 		parent.addView(headLayout);

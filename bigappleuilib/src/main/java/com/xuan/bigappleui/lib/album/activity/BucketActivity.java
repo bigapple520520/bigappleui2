@@ -1,10 +1,5 @@
 package com.xuan.bigappleui.lib.album.activity;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,7 +14,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.xuan.bigapple.lib.utils.Validators;
 import com.xuan.bigappleui.lib.album.BUAlbum;
 import com.xuan.bigappleui.lib.album.core.AlbumHelper;
 import com.xuan.bigappleui.lib.album.core.ImageLoader;
@@ -27,6 +21,12 @@ import com.xuan.bigappleui.lib.album.entity.BucketActivityView;
 import com.xuan.bigappleui.lib.album.entity.BucketListItemView;
 import com.xuan.bigappleui.lib.album.entity.ImageBucket;
 import com.xuan.bigappleui.lib.album.entity.ImageItem;
+import com.xuan.bigappleui.lib.utils.BUValidator;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 这个类是显示所有相册界面
@@ -188,7 +188,7 @@ public class BucketActivity extends Activity {
 			countTextView.setText(String.valueOf(imageBucket.imageList.size()));
 
 			List<ImageItem> imageItemList = imageBucket.imageList;
-			if (!Validators.isEmpty(imageItemList)) {
+			if (!BUValidator.isEmpty(imageItemList)) {
 				String thumbPath = imageBucket.imageList.get(0).thumbnailPath;
 				String sourcePath = imageBucket.imageList.get(0).imagePath;
 				ImageLoader.display(BucketActivity.this, imageView, thumbPath,

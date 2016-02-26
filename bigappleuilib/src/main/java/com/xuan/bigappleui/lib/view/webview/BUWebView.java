@@ -11,7 +11,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.RelativeLayout;
 
-import com.xuan.bigapple.lib.utils.display.DisplayUtils;
+import com.xuan.bigappleui.lib.utils.BUDisplayUtil;
 
 /**
  * 自定义一个WebView，方便实用
@@ -48,7 +48,7 @@ public class BUWebView extends RelativeLayout {
 	}
 
 	private void init() {
-		webViewProgressBarHeight = (int) DisplayUtils.getPxByDp(activity, 2);
+		webViewProgressBarHeight = (int) BUDisplayUtil.getPxByDp(activity, 2);
 		webViewProgressBarColor = "#53b53e";
 		initProgressBar();
 		initWebView();

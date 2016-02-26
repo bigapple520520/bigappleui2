@@ -1,8 +1,5 @@
 package com.xuan.bigappleui.demo.fileexplorer;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,7 +11,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.xuan.bigapple.lib.utils.DialogUtils;
 import com.xuan.bigappleui.R;
 import com.xuan.bigappleui.lib.fileexplorer.FileExplorerUtils;
 import com.xuan.bigappleui.lib.fileexplorer.theme.DefaultFileExplorerTheme;
@@ -23,6 +19,10 @@ import com.xuan.bigappleui.lib.fileexplorer.theme.FileExplorerThemeUtils;
 import com.xuan.bigappleui.lib.fileexplorer.theme.custom.BlueFileExplorerTheme;
 import com.xuan.bigappleui.lib.fileexplorer.theme.custom.GreenFileExplorerTheme;
 import com.xuan.bigappleui.lib.fileexplorer.widget.FileExplorerActivity;
+import com.xuan.bigappleui.lib.utils.BUDialogUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 文件选择器DEMO
@@ -49,23 +49,23 @@ public class FileExplorerDemo extends Activity {
 		theme.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				DialogUtils.select2(FileExplorerDemo.this, "请选择不同主题", true,
-						new String[] { "绿色", "蓝色", "默认" },
+				BUDialogUtil.select2(FileExplorerDemo.this, "请选择不同主题", true,
+						new String[]{"绿色", "蓝色", "默认"},
 						new DialogInterface.OnClickListener() {
 
 							@Override
 							public void onClick(DialogInterface arg0,
-									int position) {
+												int position) {
 								switch (position) {
-								case 0:
-									fileExplorerTheme = new GreenFileExplorerTheme();
-									break;
-								case 1:
-									fileExplorerTheme = new BlueFileExplorerTheme();
-									break;
-								case 2:
-									fileExplorerTheme = new DefaultFileExplorerTheme();
-									break;
+									case 0:
+										fileExplorerTheme = new GreenFileExplorerTheme();
+										break;
+									case 1:
+										fileExplorerTheme = new BlueFileExplorerTheme();
+										break;
+									case 2:
+										fileExplorerTheme = new DefaultFileExplorerTheme();
+										break;
 								}
 
 								theme.setBackgroundColor(fileExplorerTheme

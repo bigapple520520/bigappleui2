@@ -1,9 +1,6 @@
 package com.xuan.bigappleui.demo.widget;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -11,19 +8,20 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.xuan.bigapple.lib.ioc.InjectView;
-import com.xuan.bigapple.lib.ioc.app.BPActivity;
-import com.xuan.bigapple.lib.utils.DateUtils;
 import com.xuan.bigappleui.R;
+import com.xuan.bigappleui.lib.utils.BUDateUtil;
 import com.xuan.bigappleui.lib.widget.BURefreshListView;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 下拉上啦刷新控件测试
  * 
  * @author xuan
  */
-public class RefreshListViewDemoActivity extends BPActivity {
-	@InjectView(R.id.refreshView)
+public class RefreshListViewDemoActivity extends Activity {
 	private BURefreshListView refreshView;
 
 	private List<String> dataList;
@@ -33,6 +31,9 @@ public class RefreshListViewDemoActivity extends BPActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.demo_refreshlistview);
+
+		refreshView = (BURefreshListView)findViewById(R.id.refreshView);
+
 		initData();
 		initWidgets();
 	}
@@ -108,11 +109,11 @@ public class RefreshListViewDemoActivity extends BPActivity {
 					String text = null;
 					if (isPullDown) {
 						text = "我下拉刷新出来的："
-								+ DateUtils.date2StringBySecond(new Date());
+								+ BUDateUtil.date2StringBySecond(new Date());
 						dataList.add(0, text);
 					} else {
 						text = "我上拉刷新出来的："
-								+ DateUtils.date2StringBySecond(new Date());
+								+ BUDateUtil.date2StringBySecond(new Date());
 						dataList.add(text);
 					}
 				} catch (Exception e) {
@@ -126,7 +127,7 @@ public class RefreshListViewDemoActivity extends BPActivity {
 			protected void onPostExecute(Object result) {
 				adapter.notifyDataSetChanged();
 				refreshView.onRefreshComplete("最后更新："
-						+ DateUtils.date2StringBySecond(new Date()));
+						+ BUDateUtil.date2StringBySecond(new Date()));
 			}
 		}.execute();
 	}

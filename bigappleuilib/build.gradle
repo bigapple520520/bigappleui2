@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-version = "2.0.1"
+version = "2.0.2"
 
 android {
     compileSdkVersion 22
@@ -22,9 +22,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.1'
-    compile 'com.xuan:bigapplelib:2.0.0'
+    compile 'com.jopool:support-v4:1.0'
 }
 def siteUrl = 'https://github.com/bigapple520520/bigappleui2'
 def gitUrl = 'https://github.com/bigapple520520/bigappleui2.git'

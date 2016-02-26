@@ -10,8 +10,8 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import android.provider.MediaStore;
 
-import com.xuan.bigapple.lib.utils.Validators;
-import com.xuan.bigapple.lib.utils.log.LogUtils;
+import com.xuan.bigappleui.lib.utils.BULogUtil;
+import com.xuan.bigappleui.lib.utils.BUValidator;
 
 /**
  * 图片处理工具类
@@ -45,18 +45,18 @@ public abstract class ImageUtils {
 					actualimagecursor.close();
 				}
 			} catch (Exception e) {
-				LogUtils.e(e.getMessage(), e);
+				BULogUtil.e(e.getMessage(), e);
 			}
 		} else {
 			imgPath = path.getPath();
 		}
 
 		int degree = 0;
-		if (Validators.isEmpty(imgPath)) {
+		if (BUValidator.isEmpty(imgPath)) {
 			return degree;
 		}
 
-		LogUtils.d("图片地址：" + imgPath);
+		BULogUtil.d("图片地址：" + imgPath);
 
 		try {
 			// 从指定路径下读取图片，并获取其EXIF信息
@@ -77,7 +77,7 @@ public abstract class ImageUtils {
 				break;
 			}
 		} catch (Exception e) {
-			LogUtils.e(e.getMessage(), e);
+			BULogUtil.e(e.getMessage(), e);
 		}
 		return degree;
 	}
@@ -98,7 +98,7 @@ public abstract class ImageUtils {
 			nowBp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(),
 					bitmap.getHeight(), matrix, true);
 		} catch (Throwable e) {
-			LogUtils.e(e.getMessage(), e);
+			BULogUtil.e(e.getMessage(), e);
 		}
 
 		if (null == nowBp) {

@@ -2,11 +2,11 @@ package com.xuan.bigappleui.lib.lettersort.utils;
 
 import android.content.Context;
 
-import com.xuan.bigapple.lib.utils.pinyin.PinyinUtil;
 import com.xuan.bigappleui.lib.lettersort.entity.BaseItem;
 import com.xuan.bigappleui.lib.lettersort.entity.ItemContent;
 import com.xuan.bigappleui.lib.lettersort.entity.ItemDivide;
 import com.xuan.bigappleui.lib.lettersort.entity.ItemTopContent;
+import com.xuan.bigappleui.lib.utils.pinyin.BUPinyinUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -151,7 +151,7 @@ public abstract class LetterSortUtils {
 		Map<String, List<BaseItem>> ret = new HashMap<String, List<BaseItem>>();
 
 		for (ItemContent item : fromItemList) {
-			String firstLetter = PinyinUtil.toPinyinUpperF(item.getName());
+			String firstLetter = BUPinyinUtil.toPinyinUpperF(item.getName());
 
 			List<BaseItem> itemList = ret.get(firstLetter);
 			if (null == itemList) {

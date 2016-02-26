@@ -6,7 +6,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 
-import com.xuan.bigappleui.lib.utils.BULogUtils;
+import com.xuan.bigappleui.lib.utils.BULogUtil;
 
 /**
  * 打钩资源图片
@@ -37,7 +37,7 @@ public class HookDrawable extends BaseDrawable {
 	@Override
 	public void draw(Canvas canvas) {
 		Rect t = getBounds();
-		BULogUtils.d(t.toShortString());
+		BULogUtil.d(t.toShortString());
 
 		if (null == hookPath) {
 			return;

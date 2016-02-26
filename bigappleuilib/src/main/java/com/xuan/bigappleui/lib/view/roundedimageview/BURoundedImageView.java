@@ -10,7 +10,7 @@ import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import com.xuan.bigapple.lib.utils.log.LogUtils;
+import com.xuan.bigappleui.lib.utils.BULogUtil;
 
 /**
  * 这个是基于ImageView实现的可设置圆角图片控件
@@ -296,7 +296,7 @@ public class BURoundedImageView extends ImageView {
 			try {
 				drawable = res.getDrawable(mResource);
 			} catch (Exception e) {
-				LogUtils.e(e.getMessage(), e);
+				BULogUtil.e(e.getMessage(), e);
 				mResource = 0;
 			}
 		}

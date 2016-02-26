@@ -18,9 +18,9 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.xuan.bigapple.lib.utils.Validators;
-import com.xuan.bigapple.lib.utils.log.LogUtils;
-import com.xuan.bigapple.lib.utils.sharepreference.BPPreferences;
+import com.xuan.bigappleui.lib.utils.BULogUtil;
+import com.xuan.bigappleui.lib.utils.BUPreferences;
+import com.xuan.bigappleui.lib.utils.BUValidator;
 import com.xuan.bigappleui.lib.utils.ui.M;
 
 /**
@@ -225,9 +225,9 @@ public class CameraActivity extends Activity {
 		flashBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				boolean isOpen = BPPreferences.instance()
+				boolean isOpen = BUPreferences.instance()
 						.getBoolean(CameraConfig.CAMERA_FLASH_OPEN, false);
-				BPPreferences.instance().putBoolean(
+				BUPreferences.instance().putBoolean(
 						CameraConfig.CAMERA_FLASH_OPEN, !isOpen);
 				refreshFlashBtn();
 			}
@@ -245,7 +245,7 @@ public class CameraActivity extends Activity {
 							parameters.setZoom(progress * maxZoom / 100);
 							camera.setParameters(parameters);
 						} catch (Exception e) {
-							LogUtils.e(e.getMessage(), e);
+							BULogUtil.e(e.getMessage(), e);
 						}
 					}
 				});
@@ -264,7 +264,7 @@ public class CameraActivity extends Activity {
 									- Math.abs(minExposure));
 							camera.setParameters(parameters);
 						} catch (Exception e) {
-							LogUtils.e(e.getMessage(), e);
+							BULogUtil.e(e.getMessage(), e);
 						}
 					}
 				});
@@ -334,7 +334,7 @@ public class CameraActivity extends Activity {
 	// 按下拍照
 	private void takePicture(ShutterCallback shutter, PictureCallback raw,
 			PictureCallback jpeg) {
-		boolean isFlashOpen = BPPreferences.instance()
+		boolean isFlashOpen = BUPreferences.instance()
 				.getBoolean(CameraConfig.CAMERA_FLASH_OPEN, false);
 		if (isFlashOpen) {
 			// 拍照时，开启闪光灯
@@ -366,7 +366,7 @@ public class CameraActivity extends Activity {
 			try {
 				imageSavePath = CameraUtils.saveImage(data, imageSavePath,
 						cameraPreview.getDisplayDegree());
-				if (!Validators.isEmpty(imageSavePath)) {
+				if (!BUValidator.isEmpty(imageSavePath)) {
 					// 显示大图
 					finishShowIv.setImageBitmap(BitmapFactory
 							.decodeFile(imageSavePath));
@@ -379,7 +379,7 @@ public class CameraActivity extends Activity {
 				}
 				isSaving = false;
 			} catch (Exception e) {
-				LogUtils.e(e.getMessage(), e);
+				BULogUtil.e(e.getMessage(), e);
 			}
 		}
 	}
@@ -403,7 +403,7 @@ public class CameraActivity extends Activity {
 
 	// 刷新闪光灯
 	private void refreshFlashBtn() {
-		boolean isOpen = BPPreferences.instance()
+		boolean isOpen = BUPreferences.instance()
 				.getBoolean(CameraConfig.CAMERA_FLASH_OPEN, false);
 		if (isOpen) {
 			flashBtn.setImageResource(M.drawable(CameraActivity.this,

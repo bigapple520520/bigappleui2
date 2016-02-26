@@ -1,8 +1,5 @@
 package com.xuan.bigappleui.lib.fileexplorer.widget;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +11,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.xuan.bigapple.lib.utils.StringUtils;
 import com.xuan.bigappleui.lib.fileexplorer.core.DrawableHelper;
 import com.xuan.bigappleui.lib.fileexplorer.core.FileInfoListAdapter;
 import com.xuan.bigappleui.lib.fileexplorer.core.FileInfoListAdapter.SelectImageViewOnClickListener;
@@ -22,6 +18,10 @@ import com.xuan.bigappleui.lib.fileexplorer.core.FileSortHelper;
 import com.xuan.bigappleui.lib.fileexplorer.core.Util;
 import com.xuan.bigappleui.lib.fileexplorer.entity.FileExplorerActivityView;
 import com.xuan.bigappleui.lib.fileexplorer.entity.FileInfo;
+import com.xuan.bigappleui.lib.utils.BUStringUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 文件选择器界面
@@ -188,7 +188,7 @@ public class FileExplorerActivity extends Activity {
 				}));
 		if ("/".equals(defaultPath)) {
 		} else {
-			String[] items = StringUtils.split(defaultPath, "/");
+			String[] items = BUStringUtil.split(defaultPath, "/");
 			final StringBuilder filePathSb = new StringBuilder();
 			for (String item : items) {
 				filePathSb.append("/" + item);

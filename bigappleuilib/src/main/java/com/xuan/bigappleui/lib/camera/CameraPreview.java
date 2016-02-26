@@ -1,9 +1,5 @@
 package com.xuan.bigappleui.lib.camera;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.ImageFormat;
@@ -16,8 +12,12 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 
-import com.xuan.bigapple.lib.utils.Validators;
-import com.xuan.bigapple.lib.utils.log.LogUtils;
+import com.xuan.bigappleui.lib.utils.BULogUtil;
+import com.xuan.bigappleui.lib.utils.BUValidator;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * 自定义拍照界面
@@ -91,7 +91,7 @@ public class CameraPreview extends SurfaceView {
 					mInitRunnable.run();
 				}
 			} catch (Exception e) {
-				LogUtils.e(e.getMessage(), e);
+				BULogUtil.e(e.getMessage(), e);
 			}
 		}
 
@@ -113,7 +113,7 @@ public class CameraPreview extends SurfaceView {
 				}
 				Camera.Size cPreSize = parameters.getPreviewSize();
 				if (DEBUG) {
-					LogUtils.d("--------------------current pre size:w/h("
+					BULogUtil.d("--------------------current pre size:w/h("
 							+ cPreSize.width + "/" + cPreSize.height + ")");
 				}
 
@@ -124,14 +124,14 @@ public class CameraPreview extends SurfaceView {
 				}
 				Camera.Size cPicSize = parameters.getPictureSize();
 				if (DEBUG) {
-					LogUtils.d("--------------------current pre size:w/h("
+					BULogUtil.d("--------------------current pre size:w/h("
 							+ cPicSize.width + "/" + cPicSize.height + ")");
 				}
 
 				// 聚焦一下
 				mCamera.autoFocus(null);
 			} catch (Exception e) {
-				LogUtils.e(e.getMessage(), e);
+				BULogUtil.e(e.getMessage(), e);
 			}
 		}
 
@@ -145,7 +145,7 @@ public class CameraPreview extends SurfaceView {
 					mCamera = null;
 				}
 			} catch (Exception e) {
-				LogUtils.e(e.getMessage(), e);
+				BULogUtil.e(e.getMessage(), e);
 			}
 		}
 	}
@@ -176,7 +176,7 @@ public class CameraPreview extends SurfaceView {
 	private Camera.Size getSupportedPictureSize(Camera.Parameters parameters,
 			boolean isPre) {
 		List<Camera.Size> sizeList = parameters.getSupportedPictureSizes();
-		if (Validators.isEmpty(sizeList)) {
+		if (BUValidator.isEmpty(sizeList)) {
 			return null;
 		}
 
@@ -195,10 +195,10 @@ public class CameraPreview extends SurfaceView {
 		if (DEBUG) {
 			for (Camera.Size s : sizeList) {
 				if (isPre) {
-					LogUtils.d("--------------------support pre size:w/h("
+					BULogUtil.d("--------------------support pre size:w/h("
 							+ s.width + "/" + s.height + ")");
 				} else {
-					LogUtils.d("--------------------support pic size:w/h("
+					BULogUtil.d("--------------------support pic size:w/h("
 							+ s.width + "/" + s.height + ")");
 				}
 			}

@@ -1,8 +1,5 @@
 package com.xuan.bigappleui.demo.album;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,12 +12,15 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.xuan.bigapple.lib.bitmap.BPBitmapLoader;
-import com.xuan.bigapple.lib.bitmap.BitmapDisplayConfig;
-import com.xuan.bigapple.lib.utils.DialogUtils;
 import com.xuan.bigappleui.R;
 import com.xuan.bigappleui.lib.album.BUAlbum;
 import com.xuan.bigappleui.lib.album.entity.ImageItem;
+import com.xuan.bigappleui.lib.utils.BUDialogUtil;
+import com.xuan.bigappleui.lib.utils.bitmap.BPBitmapLoader;
+import com.xuan.bigappleui.lib.utils.bitmap.BitmapDisplayConfig;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 相册选择测试
@@ -46,20 +46,20 @@ public class AlbumDemo extends Activity {
 		theme.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				DialogUtils.select2(AlbumDemo.this, "请选择不同主题", true,
-						new String[] { "绿色", "蓝色", "默认" },
+				BUDialogUtil.select2(AlbumDemo.this, "请选择不同主题", true,
+						new String[]{"绿色", "蓝色", "默认"},
 						new DialogInterface.OnClickListener() {
 
 							@Override
 							public void onClick(DialogInterface arg0,
-									int position) {
+												int position) {
 								switch (position) {
-								case 0:
-									break;
-								case 1:
-									break;
-								case 2:
-									break;
+									case 0:
+										break;
+									case 1:
+										break;
+									case 2:
+										break;
 								}
 							}
 						});

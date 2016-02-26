@@ -13,7 +13,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
-import com.xuan.bigapple.lib.utils.log.LogUtils;
+import com.xuan.bigappleui.lib.utils.BULogUtil;
 
 /**
  * 从底部弹出View
@@ -96,10 +96,10 @@ public class BUPopViewLayout extends RelativeLayout {
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		if (isInContentView(event)) {
-			LogUtils.d("In");
+			BULogUtil.d("In");
 			return super.onInterceptTouchEvent(event);
 		} else {
-			LogUtils.d("Out");
+			BULogUtil.d("Out");
 			switch (event.getAction()) {
 			case MotionEvent.ACTION_CANCEL:
 			case MotionEvent.ACTION_UP:
@@ -233,7 +233,7 @@ public class BUPopViewLayout extends RelativeLayout {
 			break;
 		}
 
-		LogUtils.d("isInContentView:" + isIn);
+		BULogUtil.d("isInContentView:" + isIn);
 		return isIn;
 	}
 

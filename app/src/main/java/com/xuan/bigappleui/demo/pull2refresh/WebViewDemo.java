@@ -1,7 +1,5 @@
 package com.xuan.bigappleui.demo.pull2refresh;
 
-import java.util.Date;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -9,9 +7,11 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.xuan.bigapple.lib.utils.DateUtils;
 import com.xuan.bigappleui.lib.pullrefresh.core.PullToRefreshBase;
 import com.xuan.bigappleui.lib.pullrefresh.widget.PullToRefreshWebView;
+import com.xuan.bigappleui.lib.utils.BUDateUtil;
+
+import java.util.Date;
 
 /**
  * 基于WebView实现下拉刷新
@@ -82,7 +82,7 @@ public class WebViewDemo extends Activity {
 		protected void onPostExecute(String[] result) {
 			pullToRefreshWebView.onPullDownRefreshComplete();
 			pullToRefreshWebView.onPullUpRefreshComplete();
-			pullToRefreshWebView.setLastUpdatedLabel(DateUtils
+			pullToRefreshWebView.setLastUpdatedLabel(BUDateUtil
 					.date2StringBySecond(new Date()));
 			super.onPostExecute(result);
 		}

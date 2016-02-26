@@ -6,8 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.xuan.bigapple.lib.bitmap.BitmapDisplayConfig;
-import com.xuan.bigapple.lib.bitmap.listeners.DisplayImageListener;
+import com.xuan.bigappleui.lib.utils.bitmap.BitmapDisplayConfig;
+import com.xuan.bigappleui.lib.utils.bitmap.listeners.DisplayImageListener;
 import com.xuan.bigappleui.lib.view.photoview.BUPhotoViewAttacher.OnPhotoTapListener;
 import com.xuan.bigappleui.lib.view.photoview.app.core.ImageLoader;
 import com.xuan.bigappleui.lib.view.photoview.app.viewholder.WraperFragmentView;

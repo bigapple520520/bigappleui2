@@ -1,5 +1,6 @@
 package com.xuan.bigappleui.demo.camera;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -8,11 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.xuan.bigapple.lib.ioc.InjectView;
-import com.xuan.bigapple.lib.ioc.app.BPActivity;
-import com.xuan.bigapple.lib.utils.ToastUtils;
 import com.xuan.bigappleui.R;
 import com.xuan.bigappleui.lib.camera.CameraUtils;
+import com.xuan.bigappleui.lib.utils.BUToastUtil;
 
 /**
  * 相机使用DEMO
@@ -20,13 +19,10 @@ import com.xuan.bigappleui.lib.camera.CameraUtils;
  * @author xuan
  * 
  */
-public class CameraDemo extends BPActivity {
+public class CameraDemo extends Activity {
 	public static final int CAMERA_CODE = 1;
 
-	@InjectView(R.id.button)
 	private Button button;
-
-	@InjectView(R.id.imageView)
 	private ImageView imageView;
 
 	private final String dir = Environment.getExternalStorageDirectory()
@@ -36,6 +32,9 @@ public class CameraDemo extends BPActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.demo_camera);
+
+		button = (Button)findViewById(R.id.button);
+		imageView = (ImageView)findViewById(R.id.imageView);
 
 		button.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -50,7 +49,7 @@ public class CameraDemo extends BPActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode != RESULT_OK) {
-			ToastUtils.displayTextShort("拍照取消");
+			BUToastUtil.displayTextShort("拍照取消");
 			return;
 		}
 

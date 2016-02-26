@@ -1,7 +1,5 @@
 package com.xuan.bigappleui.demo.pull2refresh;
 
-import java.util.Date;
-
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -10,9 +8,11 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.xuan.bigapple.lib.utils.DateUtils;
 import com.xuan.bigappleui.lib.pullrefresh.core.PullToRefreshBase;
 import com.xuan.bigappleui.lib.pullrefresh.widget.PullToRefreshScrollView;
+import com.xuan.bigappleui.lib.utils.BUDateUtil;
+
+import java.util.Date;
 
 /**
  * 基于ScrollView的下拉刷新
@@ -83,7 +83,7 @@ public class ScrollViewDemo extends Activity {
 		protected void onPostExecute(String[] result) {
 			pullToRefreshScrollView.onPullDownRefreshComplete();
 			pullToRefreshScrollView.onPullUpRefreshComplete();
-			pullToRefreshScrollView.setLastUpdatedLabel(DateUtils
+			pullToRefreshScrollView.setLastUpdatedLabel(BUDateUtil
 					.date2StringBySecond(new Date()));
 			super.onPostExecute(result);
 		}

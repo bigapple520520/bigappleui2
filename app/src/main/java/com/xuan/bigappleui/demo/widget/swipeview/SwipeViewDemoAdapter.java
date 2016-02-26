@@ -1,16 +1,16 @@
 package com.xuan.bigappleui.demo.widget.swipeview;
 
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.xuan.bigapple.lib.utils.ToastUtils;
 import com.xuan.bigappleui.R;
+import com.xuan.bigappleui.lib.utils.BUToastUtil;
 import com.xuan.bigappleui.lib.widget.swipeview.adapters.BaseSwipeAdapter;
+
+import java.util.List;
 
 /**
  * 书架适配器
@@ -50,7 +50,7 @@ public class SwipeViewDemoAdapter extends BaseSwipeAdapter {
 		behind1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				ToastUtils.displayTextShort("" + position);
+				BUToastUtil.displayTextShort("" + position);
 				// closeItem(position);
 				closeAllItems();
 			}
@@ -58,7 +58,7 @@ public class SwipeViewDemoAdapter extends BaseSwipeAdapter {
 		behind2.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				ToastUtils.displayTextShort("" + position);
+				BUToastUtil.displayTextShort("" + position);
 				// closeItem(position);
 				closeAllItems();
 			}
@@ -66,7 +66,7 @@ public class SwipeViewDemoAdapter extends BaseSwipeAdapter {
 		above.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				ToastUtils.displayTextShort("我被点击了");
+				BUToastUtil.displayTextShort("我被点击了");
 			}
 		});
 	}

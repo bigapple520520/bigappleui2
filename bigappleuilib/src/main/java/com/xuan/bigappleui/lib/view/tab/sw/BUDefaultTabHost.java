@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.xuan.bigapple.lib.utils.display.DisplayUtils;
+import com.xuan.bigappleui.lib.utils.BUDisplayUtil;
 
 /**
  * 默认的tabHost实现，用户可以继承他复写部分方法，而达到自定义的效果
@@ -22,7 +22,7 @@ public class BUDefaultTabHost implements BUITabHost {
 		LinearLayout tabsLayout = new LinearLayout(context);
 		LinearLayout.LayoutParams tabsLayoutLp = new LinearLayout.LayoutParams(
 				ViewGroup.LayoutParams.MATCH_PARENT,
-				(int) DisplayUtils.getPxByDp((Activity) context, 50));
+				(int) BUDisplayUtil.getPxByDp((Activity) context, 50));
 		tabsLayout.setLayoutParams(tabsLayoutLp);
 		tabsLayout.setOrientation(LinearLayout.HORIZONTAL);
 		return tabsLayout;
@@ -33,7 +33,7 @@ public class BUDefaultTabHost implements BUITabHost {
 		FrameLayout indicateLayout = new FrameLayout(context);
 		LinearLayout.LayoutParams indicateLayoutLp = new LinearLayout.LayoutParams(
 				ViewGroup.LayoutParams.MATCH_PARENT,
-				(int) DisplayUtils.getPxByDp((Activity) context, 5));
+				(int) BUDisplayUtil.getPxByDp((Activity) context, 5));
 		indicateLayout.setLayoutParams(indicateLayoutLp);
 		indicateLayout.setBackgroundColor(Color.WHITE);
 		return indicateLayout;

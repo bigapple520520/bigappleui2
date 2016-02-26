@@ -2,8 +2,7 @@ package com.xuan.bigappleui;
 
 import android.app.Application;
 
-import com.xuan.bigapple.lib.Bigapple;
-import com.xuan.bigapple.lib.bitmap.BPBitmapLoader;
+import com.xuan.bigappleui.lib.BigappleUI;
 
 /**
  * 程序入口
@@ -15,8 +14,7 @@ public class App extends Application {
 	public void onCreate() {
 		super.onCreate();
 
-		BPBitmapLoader.init(this);
-		Bigapple.init(this);
+		BigappleUI.init(this);
 	}
 
 }

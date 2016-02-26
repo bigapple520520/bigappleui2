@@ -1,22 +1,20 @@
 package com.xuan.bigappleui.lib.view.photoview.app;
 
-import java.util.HashMap;
-
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 
-import com.xuan.bigapple.lib.utils.Validators;
+import com.xuan.bigappleui.lib.utils.BUValidator;
 import com.xuan.bigappleui.lib.view.photoview.app.core.BUViewImageFragment;
 import com.xuan.bigappleui.lib.view.photoview.app.handler.BUResidViewImageHandler;
 import com.xuan.bigappleui.lib.view.photoview.app.handler.BUUrlViewImageHandler;
 import com.xuan.bigappleui.lib.view.photoview.app.handler.BUViewImageBaseHandler;
 import com.xuan.bigappleui.lib.view.photoview.app.viewholder.CreateViewHelper;
 import com.xuan.bigappleui.lib.view.photoview.app.viewholder.WraperActivityView;
+
+import java.util.HashMap;
 
 /**
  * 查看大图Activity组件<br>
@@ -62,7 +60,7 @@ public class BUViewImageActivity extends FragmentActivity {
 		}
 
 		loadType = getIntent().getStringExtra(PARAM_LOADTYPE);
-		if (Validators.isEmpty(loadType)) {
+		if (BUValidator.isEmpty(loadType)) {
 			Log.e(TAG, "没有对应的处理逻辑块，请指定loadType值。");
 			this.finish();
 		}
@@ -81,7 +79,7 @@ public class BUViewImageActivity extends FragmentActivity {
 				.getCount();
 		wraperActivityView.textView.setText(current + "/" + total);
 		wraperActivityView.hackyViewPager
-				.setOnPageChangeListener(new OnPageChangeListener() {
+				.setOnPageChangeListener(new  ViewPager.OnPageChangeListener() {
 					@Override
 					public void onPageScrollStateChanged(int arg0) {
 					}
@@ -144,7 +142,7 @@ public class BUViewImageActivity extends FragmentActivity {
 	 * @version $Revision: 1.0 $, $Date: 2014-10-16 下午7:00:18 $
 	 */
 	private class ImagePagerAdapter extends FragmentStatePagerAdapter {
-		public ImagePagerAdapter(FragmentManager fm) {
+		public ImagePagerAdapter(android.support.v4.app.FragmentManager fm) {
 			super(fm);
 		}
 
@@ -154,7 +152,7 @@ public class BUViewImageActivity extends FragmentActivity {
 		}
 
 		@Override
-		public Fragment getItem(int position) {
+		public android.support.v4.app.Fragment getItem(int position) {
 			return BUViewImageFragment.newInstance(urls[position],
 					BUViewImageActivity.this, viewImageHandler, datas);
 		}

@@ -9,10 +9,10 @@ import android.graphics.Matrix;
 import android.util.Log;
 import android.view.Surface;
 
-import com.xuan.bigapple.lib.bitmap.core.utils.BitmapDecoder;
-import com.xuan.bigapple.lib.io.FileUtils;
-import com.xuan.bigapple.lib.utils.Validators;
-import com.xuan.bigapple.lib.utils.log.LogUtils;
+import com.xuan.bigappleui.lib.utils.BULogUtil;
+import com.xuan.bigappleui.lib.utils.BUValidator;
+import com.xuan.bigappleui.lib.utils.bitmap.core.utils.BitmapDecoder;
+import com.xuan.bigappleui.lib.utils.io.BUFileUtil;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -53,7 +53,7 @@ public abstract class CameraUtils {
 			return null;
 		}
 
-		if (Validators.isEmpty(toFileName)) {
+		if (BUValidator.isEmpty(toFileName)) {
 			toFileName = CameraConfig.SDCARD_BIGAPPLEUI_CAMERA_DEFAULT;
 		}
 
@@ -62,7 +62,7 @@ public abstract class CameraUtils {
 			createParentDirs(new File(
 					CameraConfig.SDCARD_BIGAPPLEUI_CAMERA_TEMP));
 			// 存放到临时目录
-			FileUtils.writeByteArrayToFile(new File(
+			BUFileUtil.writeByteArrayToFile(new File(
 					CameraConfig.SDCARD_BIGAPPLEUI_CAMERA_TEMP), data, false);
 			// 压缩调整到输出目录
 			changeOppositeSizeMayDegree(
@@ -70,10 +70,10 @@ public abstract class CameraUtils {
 					CameraConfig.outputImageWidth,
 					CameraConfig.outputImageHeight, degree);
 			// 删除临时文件
-			FileUtils
+			BUFileUtil
 					.deleteFileOrDirectoryQuietly(CameraConfig.SDCARD_BIGAPPLEUI_CAMERA_TEMP);
 		} catch (IOException e) {
-			LogUtils.e(e.getMessage(), e);
+			BULogUtil.e(e.getMessage(), e);
 			return null;
 		}
 
@@ -187,7 +187,7 @@ public abstract class CameraUtils {
 					sourceBitmap.getWidth(), sourceBitmap.getHeight(), matrix,
 					true);
 		} catch (OutOfMemoryError e) {
-			LogUtils.e(e.getMessage(), e);
+			BULogUtil.e(e.getMessage(), e);
 		}
 
 		if (null == newBitmap) {

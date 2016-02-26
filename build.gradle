@@ -17,5 +17,11 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven {
+            url 'https://dl.bintray.com/xuan698400/maven'
+        }
+        maven {
+            url 'http://maven.jopool.net/content/groups/public'
+        }
     }
 }

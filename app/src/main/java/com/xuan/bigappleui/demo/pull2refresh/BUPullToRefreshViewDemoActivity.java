@@ -1,18 +1,18 @@
 package com.xuan.bigappleui.demo.pull2refresh;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.xuan.bigapple.lib.utils.DateUtils;
 import com.xuan.bigappleui.R;
+import com.xuan.bigappleui.lib.utils.BUDateUtil;
 import com.xuan.bigappleui.lib.view.listview.BUPullToRefreshListView;
 import com.xuan.bigappleui.lib.view.listview.BUPullToRefreshListViewListener;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * ANPullToRefreshListView DEMO
@@ -83,11 +83,11 @@ public class BUPullToRefreshViewDemoActivity extends Activity {
 					String text = null;
 					if (isPullDown) {
 						text = "我下拉刷新出来的："
-								+ DateUtils.date2StringBySecond(new Date());
+								+ BUDateUtil.date2StringBySecond(new Date());
 						baseAdapter.getDataList().add(0, text);
 					} else {
 						text = "我上滚加载更多出来的："
-								+ DateUtils.date2StringBySecond(new Date());
+								+ BUDateUtil.date2StringBySecond(new Date());
 						baseAdapter.getDataList().add(text);
 					}
 				} catch (Exception e) {
@@ -102,7 +102,7 @@ public class BUPullToRefreshViewDemoActivity extends Activity {
 				baseAdapter.notifyDataSetChanged();
 				if (isPullDown) {
 					pullToRefreshListView.onPullDownRefreshComplete("最后更新："
-							+ DateUtils.date2StringBySecond(new Date()));
+							+ BUDateUtil.date2StringBySecond(new Date()));
 				} else {
 					// pullToRefreshListView.onScrollUpRefreshComplete("上滚加载更多");
 					pullToRefreshListView.onScrollUpNoMoreData("没有更多数据了");

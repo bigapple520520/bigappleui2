@@ -18,7 +18,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.widget.ImageView.ScaleType;
 
-import com.xuan.bigappleui.lib.utils.BULogUtils;
+import com.xuan.bigappleui.lib.utils.BULogUtil;
 
 /**
  * 这个是基于Drawable的自定义资源来，用来实现圆角图片绘制
@@ -467,7 +467,7 @@ public class BURoundedDrawable extends Drawable {
 			if (null != bm) {
 				return new BURoundedDrawable(bm);
 			} else {
-				BULogUtils.e("Failed to create bitmap from drawable!");
+				BULogUtil.e("Failed to create bitmap from drawable!");
 			}
 		}
 		return drawable;
@@ -494,7 +494,7 @@ public class BURoundedDrawable extends Drawable {
 			drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
 			drawable.draw(canvas);
 		} catch (Exception e) {
-			BULogUtils.e("Exception!!! When you call drawableToBitmap,cause:"
+			BULogUtil.e("Exception!!! When you call drawableToBitmap,cause:"
 					+ e.getMessage(), e);
 			bitmap = null;
 		}

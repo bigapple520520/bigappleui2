@@ -11,13 +11,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.xuan.bigapple.lib.utils.ToastUtils;
-import com.xuan.bigapple.lib.utils.display.DisplayUtils;
 import com.xuan.bigappleui.lib.album.BUAlbum;
 import com.xuan.bigappleui.lib.album.core.ImageLoader;
 import com.xuan.bigappleui.lib.album.entity.BucketImageActivityView;
 import com.xuan.bigappleui.lib.album.entity.BucketImageListItemView;
 import com.xuan.bigappleui.lib.album.entity.ImageItem;
+import com.xuan.bigappleui.lib.utils.BUDisplayUtil;
+import com.xuan.bigappleui.lib.utils.BUToastUtil;
 
 import java.util.List;
 
@@ -114,8 +114,8 @@ public class BucketImageActivity extends Activity {
 								if (Temp.tempSelMap.size() >= limitCount
 										&& -1 != limitCount) {
 									// 提示不可选了
-									ToastUtils.displayTextShort("你最多只能选择"
-													+ limitCount + "张照片");
+									BUToastUtil.displayTextShort("你最多只能选择"
+											+ limitCount + "张照片");
 								} else {
 									bucketImageListItemView.imageViewSel
 											.setVisibility(View.VISIBLE);
@@ -132,8 +132,8 @@ public class BucketImageActivity extends Activity {
 				});
 
 		// 限制图片大小
-		mScreenWidth = DisplayUtils.getDisplayMetrics(this).widthPixels;
-		padding = (int) DisplayUtils.getPxByDp(this, 40);
+		mScreenWidth = BUDisplayUtil.getDisplayMetrics(this).widthPixels;
+		padding = (int) BUDisplayUtil.getPxByDp(this, 40);
 
 		initCount();// 初始化已选张数
 	}

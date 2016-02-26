@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.xuan.bigapple.lib.utils.ContextUtils;
 import com.xuan.bigappleui.R;
+import com.xuan.bigappleui.lib.utils.BUContextUtil;
 import com.xuan.bigappleui.lib.view.BUZoomImageView;
 import com.xuan.bigappleui.lib.view.photoview.BUPhotoView;
 import com.xuan.bigappleui.lib.view.photoview.BUPhotoViewAttacher.OnPhotoTapListener;
@@ -50,9 +50,9 @@ public class ZoomImageViewDemoActivity extends Activity {
 										"http://c.hiphotos.baidu.com/image/pic/item/810a19d8bc3eb135394e23c5a51ea8d3fc1f44c6.jpg",
 										"http://b.hiphotos.baidu.com/image/pic/item/aec379310a55b3193a929fbc41a98226cefc178b.jpg",
 										"http://e.hiphotos.baidu.com/image/pic/item/ac4bd11373f082026ea01c3548fbfbedab641b8d.jpg",
-										ContextUtils.getSdCardPath()
+										BUContextUtil.getSdCardPath()
 												+ "/xuan/1.jpg",
-										ContextUtils.getSdCardPath()
+										BUContextUtil.getSdCardPath()
 												+ "/xuan/2.jpg" }, 1, null);
 			}
 		});
@@ -70,9 +70,9 @@ public class ZoomImageViewDemoActivity extends Activity {
 										"http://c.hiphotos.baidu.com/image/pic/item/810a19d8bc3eb135394e23c5a51ea8d3fc1f44c6.jpg",
 										"http://b.hiphotos.baidu.com/image/pic/item/aec379310a55b3193a929fbc41a98226cefc178b.jpg",
 										"http://e.hiphotos.baidu.com/image/pic/item/ac4bd11373f082026ea01c3548fbfbedab641b8d.jpg",
-										ContextUtils.getSdCardPath()
+										BUContextUtil.getSdCardPath()
 												+ "/xuan/1.jpg",
-										ContextUtils.getSdCardPath()
+										BUContextUtil.getSdCardPath()
 												+ "/xuan/2.jpg" }, 1,
 								MyViewImageActivity.LOADTYPE1, null,
 								MyViewImageActivity.class);
