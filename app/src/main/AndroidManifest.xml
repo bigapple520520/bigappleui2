@@ -39,6 +39,8 @@
         <activity android:name=".demo.viewpage.CyclePageDemoActivity" />
         <activity android:name=".demo.lettersort.LetterSortDemoActivity" />
         <activity android:name=".demo.slidingmenu.SlidingMenuDemoActivity" />
+
+        <activity android:name=".demo.view.ViewDemoMain" />
         <activity android:name=".demo.view.zoomimageview.ZoomImageViewDemoActivity" />
         <activity android:name=".demo.view.roundedimageview.RoundedImageViewDemoActivity" />
         <activity android:name=".demo.view.SlipButtonDemoActivity" />

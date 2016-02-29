@@ -2,16 +2,15 @@ package com.xuan.bigappleui.lib.view.webview;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.View;
-import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.RelativeLayout;
 
-import com.xuan.bigappleui.lib.utils.BUDisplayUtil;
+import com.xuan.bigappleui.lib.view.webview.core.BUWebChromeClient;
+import com.xuan.bigappleui.lib.view.webview.core.BUWebViewClient;
+import com.xuan.bigappleui.lib.view.webview.jscall.JsCallback;
+import com.xuan.bigappleui.lib.view.webview.progress.BUProgress;
 
 /**
  * 自定义一个WebView，方便实用
@@ -19,59 +18,37 @@ import com.xuan.bigappleui.lib.utils.BUDisplayUtil;
  * @author xuan
  * 
  */
-public class BUWebView extends RelativeLayout {
-	private final Activity activity;
-	/** 进度条高 */
-	public static int webViewProgressBarHeight;
-	/** 进度条颜色 */
-	public static String webViewProgressBarColor;
+public class BUWebView extends WebView {
+	private JsCallback mJsCallback;
 
-	private BUWebViewProgressBar progressBar;
-	private WebView webView;
+	private BUWebViewClient mWebViewClient;
+	private BUWebChromeClient mWebChromeClient;
 
 	public BUWebView(Context context) {
 		super(context);
-		activity = (Activity) context;
+		context = (Activity) context;
 		init();
 	}
 
 	public BUWebView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		activity = (Activity) context;
 		init();
 	}
 
 	public BUWebView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		activity = (Activity) context;
 		init();
 	}
 
 	private void init() {
-		webViewProgressBarHeight = (int) BUDisplayUtil.getPxByDp(activity, 2);
-		webViewProgressBarColor = "#53b53e";
-		initProgressBar();
 		initWebView();
 	}
 
-	private void initProgressBar() {
-		progressBar = new BUWebViewProgressBar(activity);
-		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-				RelativeLayout.LayoutParams.MATCH_PARENT,
-				webViewProgressBarHeight);
-		progressBar.setLayoutParams(lp);
-		addView(progressBar);
-	}
-
 	private void initWebView() {
-		webView = new WebView(activity);
-		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-				RelativeLayout.LayoutParams.MATCH_PARENT,
-				RelativeLayout.LayoutParams.MATCH_PARENT);
-		webView.setLayoutParams(lp);
-		addView(webView);
+		/** 滚动条在页面之上,这样不会留空白边 */
+		setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
 
-		WebSettings webSettings = webView.getSettings();
+		WebSettings webSettings = getSettings();
 		/** 支持缩放 */
 		webSettings.setSupportZoom(true);
 		/** 隐藏缩放按钮 */
@@ -80,54 +57,66 @@ public class BUWebView extends RelativeLayout {
 		/** 支持JS执行 */
 		webSettings.setJavaScriptEnabled(true);
 
+
 		/** 设置点击页面上的连接时，使用原webView显示（默认启动第三方浏览器显示） */
-		webView.setWebViewClient(new WebViewClient() {
-			@Override
-			public boolean shouldOverrideUrlLoading(WebView view, String url) {
-				view.loadUrl(url);
-				return true;
-			};
-
-			@Override
-			public void onPageStarted(WebView view, String url, Bitmap favicon) {
-				progressBar.setVisibility(View.VISIBLE);
-			}
-
-			@Override
-			public void onPageFinished(WebView view, String url) {
-				progressBar.setVisibility(View.GONE);
-			}
-		});
+		mWebViewClient = new BUWebViewClient();
+		setWebViewClient(mWebViewClient);
 
 		/** 获取页面标题title、加载进度设置 */
-		webView.setWebChromeClient(new WebChromeClient() {
-			@Override
-			public void onReceivedTitle(WebView view, String t) {
-			}
-
-			@Override
-			public void onProgressChanged(WebView view, int newProgress) {
-				progressBar.updateProgress(newProgress);
-			}
-		});
+		mWebChromeClient = new BUWebChromeClient();
+		setWebChromeClient(mWebChromeClient);
 	}
 
 	/**
-	 * 进度条控件
-	 * 
-	 * @return
+	 * 设置JS调用回调
+	 *
+	 * @param jsCallback
 	 */
-	public BUWebViewProgressBar getProgressBar() {
-		return progressBar;
+	public void setBuJsCallback(JsCallback jsCallback) {
+		mWebViewClient.setJsCallback(jsCallback);
+		this.mJsCallback = jsCallback;
 	}
 
 	/**
-	 * WebView控件
-	 * 
-	 * @return
+	 * 设置ChromeClient
+	 *
+	 * @param buWebChromeClient
 	 */
-	public WebView getWebView() {
-		return webView;
+	public void setBuWebChromeClient(BUWebChromeClient buWebChromeClient) {
+		this.mWebChromeClient = buWebChromeClient;
+		setWebChromeClient(this.mWebChromeClient);
+	}
+
+	/**
+	 * 设置ViewClient
+	 *
+	 * @param buWebViewClient
+	 */
+	public void setBuWebViewClient(BUWebViewClient buWebViewClient) {
+		if(null != buWebViewClient){
+			buWebViewClient.setJsCallback(mJsCallback);
+		}
+		this.mWebViewClient = buWebViewClient;
+		setWebViewClient(this.mWebViewClient);
+	}
+
+	/**
+	 * 设置进度条
+	 *
+	 * @param progress
+	 */
+	public void setBuProgress(BUProgress progress){
+		this.mWebViewClient.setProgress(progress);
+		this.mWebChromeClient.setProgress(progress);
+	}
+
+	/**
+	 * 调用JS
+	 *
+	 * @param message
+	 */
+	public void callJs(String message){
+		loadUrl("javascript:beCalledByBigappleui('"+message+"');");
 	}
 
 }

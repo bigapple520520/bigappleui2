@@ -18,6 +18,7 @@ import com.xuan.bigappleui.demo.slidingmenu.SlidingMenuDemoActivity;
 import com.xuan.bigappleui.demo.slidingupdown.SlidingUpDownDemoActivity;
 import com.xuan.bigappleui.demo.view.NumRadioButtonDemoActivity;
 import com.xuan.bigappleui.demo.view.SlipButtonDemoActivity;
+import com.xuan.bigappleui.demo.view.ViewDemoMain;
 import com.xuan.bigappleui.demo.view.gridview.DragGridViewDemo;
 import com.xuan.bigappleui.demo.view.roundedimageview.RoundedImageViewDemoActivity;
 import com.xuan.bigappleui.demo.view.tab.SwTabHostDemo;
@@ -59,6 +60,7 @@ public class BigappleUiMain extends Activity {
 		addButton("BURefreshView测试", RefreshListViewDemoActivity.class);
 		addButton("SwipeView测试", SwipeViewActivity.class);
 
+		addButton("View模块", ViewDemoMain.class);
 		// addButton("Camera测试", CameraDemo.class);
 	}
 
