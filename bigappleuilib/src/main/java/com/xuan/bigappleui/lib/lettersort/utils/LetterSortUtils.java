@@ -15,7 +15,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
 
 /**
  * 给列表数据排序用
@@ -98,31 +99,34 @@ public abstract class LetterSortUtils {
 		if (null != unknowNameList) {
 			letter2ItemListMap.remove("#");
 		}
+		// 通过key排序map
+		Map<String, List<BaseItem>> tempMap = new TreeMap<>(
+				new Comparator<Object>() {
+					public int compare(Object obj1, Object obj2) {
+						String v1 = (String) obj1;
+						String v2 = (String) obj2;
+						int s = v1.compareTo(v2);
+						return s;
+					}
+				}
+		);
 
-		// 遍历正常的，并按字母排序，使用了选择排序的算法
-		for (Entry<String, List<BaseItem>> entry : letter2ItemListMap
+		Set col = letter2ItemListMap.keySet();
+		Iterator iter = col.iterator();
+		while (iter.hasNext()) {
+			String key = (String) iter.next();
+			List<BaseItem> value = letter2ItemListMap.get(key);
+			tempMap.put(key, value);
+		}
+
+		for (Map.Entry<String, List<BaseItem>> entry : tempMap
 				.entrySet()) {
 			String key = entry.getKey();
 			List<BaseItem> itemList = entry.getValue();
-
-			if (ret.isEmpty()) {
-				ret.add(new ItemDivide(key));
-				for (BaseItem item : itemList) {
-					ret.add(item);
-				}
-			} else {
-				ItemDivide itemDivide = (ItemDivide) ret.get(0);
-				if (key.charAt(0) > itemDivide.getLetter().charAt(0)) {
-					ret.add(new ItemDivide(key));
-					for (BaseItem item : itemList) {
-						ret.add(item);
-					}
-				} else {
-					for (BaseItem item : itemList) {
-						ret.add(0, item);
-					}
-					ret.add(0, new ItemDivide(key));
-				}
+			ItemDivide itemDivide = new ItemDivide(key);
+			ret.add(itemDivide);
+			for (BaseItem item : itemList) {
+				ret.add(item);
 			}
 		}
 
