@@ -1,8 +1,5 @@
 package com.xuan.bigappleui.demo.pull2refresh;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +9,9 @@ import android.widget.ListView;
 
 import com.xuan.bigappleui.lib.pullrefresh.core.PullToRefreshBase;
 import com.xuan.bigappleui.lib.pullrefresh.widget.PullToRefreshListView;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * 基于ListView实现下拉刷新
@@ -41,8 +41,8 @@ public class ListViewDemo extends Activity {
 				android.R.layout.simple_list_item_1, dataList);
 		listView.setAdapter(adapter);
 
-		pullToRefreshListView.setPullDownRefreshEnabled(true);
-		pullToRefreshListView.setPullUpRefreshEnabled(true);
+		//pullToRefreshListView.setPullDownRefreshEnabled(true);
+		//pullToRefreshListView.setPullUpRefreshEnabled(true);
 		// ListView特有的，滚到到底部后自动就加载更多方式
 
 		// 设置下拉刷新和上拉加载回调

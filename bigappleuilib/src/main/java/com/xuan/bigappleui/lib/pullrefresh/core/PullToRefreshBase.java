@@ -46,7 +46,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout
 	/** 下拉刷新是否可用 */
 	private boolean mPullDownRefreshEnabled = true;
 	/** 上拉加载是否可用 */
-	private boolean mPullUpRefreshEnabled = false;
+	private boolean mPullUpRefreshEnabled = true;
 	/** 判断滑动到底部加载是否可用 */
 	private boolean mScrollUpRefreshEnabled = false;
 
@@ -883,7 +883,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout
 	protected void onStateChanged(State state, boolean isPullDown) {
 	}
 
-	// ////////////////////////////////子类必须继承方法/////////////////////////////////////////////////////
+	// ////////////////////////////////子类必须继承方法,用来实现不同组件的刷新/////////////////////////////////////////////////////
 	/**
 	 * 创建可以刷新的View
 	 * 
