@@ -17,12 +17,7 @@ public class BUWebViewClient extends WebViewClient {
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        if(null != mJsCallback){
-            JsCall.call(view, url, mJsCallback);
-        }else{
-            view.loadUrl(url);
-        }
-
+        JsCall.call(view, url, mJsCallback);
         return true;
     }
 

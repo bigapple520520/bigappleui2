@@ -1,8 +1,8 @@
 package com.xuan.bigappleui.lib.view.webview.jscall;
 
+import android.util.Log;
 import android.webkit.WebView;
 
-import com.xuan.bigappleui.lib.utils.BULogUtil;
 import com.xuan.bigappleui.lib.utils.BUStringUtil;
 import com.xuan.bigappleui.lib.utils.BUValidator;
 
@@ -28,7 +28,7 @@ public abstract class JsCall {
 	 */
 	public static void call(WebView webView, String url, JsCallback jsCallback) {
 		if (BUValidator.isEmpty(url)) {
-			BULogUtil.d("Url is empty!!!");
+			Log.d(TAG, "Url is empty!!!");
 			return;
 		}
 
@@ -37,9 +37,11 @@ public abstract class JsCall {
 			String[] urlStrAndParamsStr = BUStringUtil.split(url, "?");
 			if (urlStrAndParamsStr.length == 1) {
 				// 没有参数
-				jsCallback.call(
-						urlStrAndParamsStr[0].replaceAll(LOCAL_PROTOCOL, ""),
-						new HashMap<String, String>());
+				if(null != jsCallback){
+					jsCallback.call(
+							urlStrAndParamsStr[0].replaceAll(LOCAL_PROTOCOL, ""),
+							new HashMap<String, String>());
+				}
 			} else if (urlStrAndParamsStr.length == 2) {
 				// 带参数
 				String urlStr = urlStrAndParamsStr[0].replaceAll(
@@ -54,11 +56,11 @@ public abstract class JsCall {
 					paramMap.put(keyAndValue[0],
 							URLDecoder.decode(keyAndValue[1]));
 				}
-
-				jsCallback.call(urlStr, paramMap);
+				if(null != jsCallback){
+					jsCallback.call(urlStr, paramMap);
+				}
 			}
 		} else {
-			// 正常的访问地址
 			webView.loadUrl(url);
 		}
 	}

@@ -14,11 +14,12 @@ import android.view.ViewConfiguration;
 import android.widget.ImageView;
 
 /**
- * 缩放图片的控件，继承ImageView，用法跟ImageView差不多
+ * 缩放图片的控件，继承ImageView，用法跟ImageView差不多(效果不是很好,建议使用photoview)
  * 
  * @author xuan
  * @version $Revision: 1.0 $, $Date: 2013-7-15 上午10:23:49 $
  */
+@Deprecated
 public class BUZoomImageView extends ImageView {
 
 	// 放大的最大倍数

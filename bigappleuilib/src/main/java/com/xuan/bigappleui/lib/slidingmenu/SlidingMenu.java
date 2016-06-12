@@ -746,7 +746,7 @@ public class SlidingMenu extends RelativeLayout {
 	 * @version $Revision: 1.0 $, $Date: 2014-11-25 下午2:38:41 $
 	 */
 	public interface OnOpenedListener {
-		public void onOpened();
+		void onOpened();
 	}
 
 	/**
@@ -756,11 +756,11 @@ public class SlidingMenu extends RelativeLayout {
 	 * @version $Revision: 1.0 $, $Date: 2014-11-25 下午2:39:46 $
 	 */
 	public interface OnClosedListener {
-		public void onClosed();
+		void onClosed();
 	}
 
 	public interface CanvasTransformer {
-		public void transformCanvas(Canvas canvas, float percentOpen);
+		void transformCanvas(Canvas canvas, float percentOpen);
 	}
 
 	public CustomViewAbove getmViewAbove() {

@@ -396,7 +396,7 @@ public class BUDragGridView extends GridView {
 		 * @param to
 		 *            拖拽到的position
 		 */
-		public void onChange(int form, int to);
+		 void onChange(int form, int to);
 	}
 
 }

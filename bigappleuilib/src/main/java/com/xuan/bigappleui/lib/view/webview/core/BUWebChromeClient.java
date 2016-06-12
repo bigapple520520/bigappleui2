@@ -15,7 +15,6 @@ public class BUWebChromeClient extends WebChromeClient {
     public void onProgressChanged(WebView view, int newProgress) {
         if(null != mProgress){
             mProgress.updateProgress(newProgress);
-
             if(newProgress >= 100){
                 mProgress.dismiss();
             }

@@ -17,6 +17,8 @@ import com.xuan.bigappleui.lib.utils.BUCompat;
  * 
  */
 public class BUWebViewProgressBar extends FrameLayout implements BUProgress{
+	private static final String DEFAULT_PROGRESS_COLOR = "#53b53e";
+
 	/** 控件的宽 */
 	private int mWidth;
 	/** 进度条 */
@@ -56,7 +58,7 @@ public class BUWebViewProgressBar extends FrameLayout implements BUProgress{
 
 		// 默认颜色
 		BUCompat.setViewBackgroundDrawable(progressView, new ColorDrawable(
-				Color.parseColor("#53b53e")));
+				Color.parseColor(DEFAULT_PROGRESS_COLOR)));
 
 		progressView.setVisibility(View.INVISIBLE);
 		addView(progressView);
@@ -83,7 +85,6 @@ public class BUWebViewProgressBar extends FrameLayout implements BUProgress{
 		if (View.VISIBLE != progressView.getVisibility()) {
 			progressView.setVisibility(View.VISIBLE);
 		}
-
 		percent = Math.min(100, Math.max(1, p));
 		int padding = (mWidth / 100) * (100 - percent);
 		setPadding(0, 0, padding, 0);

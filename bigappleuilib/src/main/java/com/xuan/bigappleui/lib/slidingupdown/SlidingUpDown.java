@@ -137,7 +137,7 @@ public class SlidingUpDown extends FrameLayout {
 	 * @version $Revision: 1.0 $, $Date: 2014-1-17 下午7:21:49 $
 	 */
 	public interface SlidingUpDownListener {
-		public void whichScreen(int which);
+		void whichScreen(int which);
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class SlidingUpDown extends FrameLayout {
 	 * @author xuan
 	 */
 	public interface OpenPercentListener {
-		public void openPercent(float percent);
+		void openPercent(float percent);
 	}
 
 }
