@@ -65,6 +65,8 @@
         <activity android:name=".demo.view.webview.BUWebViewDemo" />
         <activity android:name=".demo.camera.CameraDemo" />
 
+        <activity android:name=".demo.dialog.DemoDialogActivity" />
+
         <!-- 查看大图控件需要在这里注册Activity，或者注册继承他的自定义的Activity，获自定义 -->
         <activity android:name="com.xuan.bigappleui.lib.view.photoview.app.BUViewImageActivity" android:theme="@android:style/Theme.Black.NoTitleBar"/>
         <!-- 自定义 -->

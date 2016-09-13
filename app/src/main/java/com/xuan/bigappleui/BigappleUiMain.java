@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import com.xuan.bigappleui.demo.DrawImageActivityDemo;
 import com.xuan.bigappleui.demo.album.AlbumDemo;
+import com.xuan.bigappleui.demo.dialog.DemoDialogActivity;
 import com.xuan.bigappleui.demo.fileexplorer.FileExplorerDemo;
 import com.xuan.bigappleui.demo.gifview.GifViewDemoActivity;
 import com.xuan.bigappleui.demo.lettersort.LetterSortDemoActivity;
@@ -61,6 +62,7 @@ public class BigappleUiMain extends Activity {
 		addButton("SwipeView测试", SwipeViewActivity.class);
 
 		addButton("View模块", ViewDemoMain.class);
+		addButton("Dialog模块", DemoDialogActivity.class);
 		// addButton("Camera测试", CameraDemo.class);
 	}
 
