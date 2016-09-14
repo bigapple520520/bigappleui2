@@ -1,4 +1,4 @@
-package com.xuan.bigappleui.lib.dialog;
+package com.xuan.bigappleui.lib.dialog.core;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -18,6 +18,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.xuan.bigappleui.lib.R;
+
+import java.util.List;
 
 /**
  * 多个item单选对话框
@@ -52,24 +54,27 @@ public class BUSingleSelectDialog extends Dialog {
 
 	public static class Builder {
 		private final Activity activity;
-		private String[] itemTexts;
-		private View.OnClickListener[] itemOnClickListeners;
+		private List<BUSingleSelectDialog.Item> itemList;
+		private ItemOnClickListener itemOnClickListener;
 
 		public Builder(Context context) {
 			activity = (Activity) context;
 		}
 
-		public Builder setItemTextAndOnClickListener(String[] itemTexts,
-				View.OnClickListener[] itemOnClickListeners) {
-			this.itemTexts = itemTexts;
-			this.itemOnClickListeners = itemOnClickListeners;
+		public Builder setItems(List<BUSingleSelectDialog.Item> itemList){
+			this.itemList = itemList;
+			return this;
+		}
+
+		public Builder setItemOnClickListener(ItemOnClickListener l){
+			this.itemOnClickListener = l;
 			return this;
 		}
 
 		public BUSingleSelectDialog create() {
 			final BUSingleSelectDialog dialog = new BUSingleSelectDialog(
 					activity);
-			if (null != itemTexts) {
+			if (null != itemList) {
 				dialog.mListView.setAdapter(new BaseAdapter() {
 					@Override
 					public View getView(int postion, View view, ViewGroup arg2) {
@@ -78,37 +83,33 @@ public class BUSingleSelectDialog extends Dialog {
 									R.layout.bu_dialog_singleselect_listitem,
 									null);
 						}
-
-						String itemText = itemTexts[postion];
-						final View.OnClickListener itemOnClickListener = itemOnClickListeners[postion];
-
+						//get ui
 						View seperator = view.findViewById(R.id.seperator);
-						final TextView itemTv = (TextView) view
-								.findViewById(R.id.itemTv);
-
+						final TextView itemTv = (TextView) view.findViewById(R.id.itemTv);
 						if (0 == postion) {
 							// 第一item不要分割线
 							seperator.setVisibility(View.GONE);
 						}
-
-						itemTv.setText(itemText);
-						if (null != itemOnClickListener) {
-							view.setOnClickListener(new View.OnClickListener() {
-								@Override
-								public void onClick(View view) {
-									itemOnClickListener.onClick(view);
-									dialog.dismiss();
+						//set data
+						final Item item = itemList.get(postion);
+						itemTv.setText(item.getText());
+						//init event
+						view.setOnClickListener(new View.OnClickListener() {
+							@Override
+							public void onClick(View view) {
+								if(null != itemOnClickListener){
+									itemOnClickListener.onClick(item, view);
 								}
-							});
-
-						}
-
+								dialog.dismiss();
+							}
+						});
+						//
 						return view;
 					}
 
 					@Override
 					public int getCount() {
-						return itemTexts.length;
+						return itemList.size();
 					}
 
 					@Override
@@ -143,6 +144,39 @@ public class BUSingleSelectDialog extends Dialog {
 		DisplayMetrics metrics = new DisplayMetrics();
 		mActivity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
 		return (int) (metrics.density * dp);
+	}
+
+	public static class Item{
+		private String text;
+		private Object data;
+
+		public Item(){
+		}
+
+		public Item(String text, Object data){
+			this.text = text;
+			this.data =data;
+		}
+
+		public Object getData() {
+			return data;
+		}
+
+		public void setData(Object data) {
+			this.data = data;
+		}
+
+		public String getText() {
+			return text;
+		}
+
+		public void setText(String text) {
+			this.text = text;
+		}
+	}
+
+	public interface ItemOnClickListener{
+		void onClick(Item item, View view);
 	}
 
 }

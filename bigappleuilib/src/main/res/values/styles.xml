@@ -1,5 +1,5 @@
 <resources>
-    <!-- dg.dialog -->
+    <!-- dialog -->
     <!-- progressBar -->
     <style name="BuProgressBarStyle" parent="android:style/Widget.ProgressBar">
         <item name="android:indeterminateDrawable">@drawable/bu_dialog_progress_layerlist</item>

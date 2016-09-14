@@ -1,4 +1,4 @@
-package com.xuan.bigappleui.lib.dialog;
+package com.xuan.bigappleui.lib.dialog.core;
 
 import android.app.Activity;
 import android.app.Dialog;

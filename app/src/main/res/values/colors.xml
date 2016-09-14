@@ -2,4 +2,7 @@
 <resources>
     <color name="tab_btn_text_normal">#696969</color>
     <color name="tab_btn_text_sel">#ffffff</color>
+
+    <!-- 自定义对话框颜色 -->
+    <color name="bu_dialog_title_bg">#E10601</color><!-- 弹出框标题背景色 -->
 </resources>

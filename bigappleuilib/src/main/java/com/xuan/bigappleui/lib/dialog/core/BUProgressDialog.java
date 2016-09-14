@@ -1,4 +1,4 @@
-package com.xuan.bigappleui.lib.dialog;
+package com.xuan.bigappleui.lib.dialog.core;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -46,6 +46,10 @@ public class BUProgressDialog extends ProgressDialog {
 	 */
 	public static BUProgressDialog createInstance(Context context) {
 		return new BUProgressDialog(context);
+	}
+
+	public static BUProgressDialog createInstance(Context context, String message) {
+		return new BUProgressDialog(context, message);
 	}
 
 }
